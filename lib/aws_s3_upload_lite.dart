@@ -39,6 +39,7 @@ class AwsS3 {
 
     /// The key to save this file as. Will override destDir and filename if set.
     String? key,
+    String? endpointUrl,
 
     /// Access control list enables you to manage access to bucket and objects
     /// For more information visit [https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html]
@@ -58,7 +59,7 @@ class AwsS3 {
       if (useSSL) {
         httpStr += 's';
       }
-      final endpoint = '$httpStr://$bucket.s3.$region.amazonaws.com';
+      final endpoint = endpointUrl ?? '$httpStr://$bucket.s3.$region.amazonaws.com';
 
       String? uploadKey;
 
